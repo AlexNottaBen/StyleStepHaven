@@ -1,0 +1,30 @@
+.img {
+    width: 275px;
+    height: 175px;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.productForm {
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #100f0f;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #100f0f;
+}
+
+.productForm:hover {
+    background-color: #201d1dd4;
+}
+
+.size {
+    font-size: 25px;
+    font-family: Kanit, sans-serif;
+}
+
+.name {
+    font-family: Kanit, sans-serif;
+}

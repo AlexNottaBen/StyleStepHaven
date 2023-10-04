@@ -1,0 +1,39 @@
+.search {
+    background: #191b1f;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.search:focus {
+    outline: none;
+    border-color: #16ea1a;
+}
+
+.button {
+    font-family: Martian Mono, sans-serif;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #16ea1a;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .search {
+        font-size: 16px;
+        padding: 5px;
+    }
+}

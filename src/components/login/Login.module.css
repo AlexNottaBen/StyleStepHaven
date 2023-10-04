@@ -1,0 +1,74 @@
+.loginForm {
+    text-align: center;
+    padding: 25px;
+    margin: 10px;
+    border: 5px solid #16ea1a;
+    border-radius: 10px;
+    font-family: Kanit, sans-serif;
+    height: 100vh;
+}
+
+.email,
+.password {
+    padding: 10px;
+}
+
+.emailInput,
+.passwordInput {
+    background: #191b1f;
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.emailInput {
+    margin: 10px 20px 0px 36px;
+}
+
+.passwordInput {
+    margin: 10px 20px 0px 10px;
+}
+
+.emailInput:focus {
+    outline: none;
+    border-color: #16ea1a;
+}
+
+.passwordInput:focus {
+    outline: none;
+    border-color: #16ea1a;
+}
+
+.buttonLogin {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    background-color: #191b1f;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.buttonRegistration {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    background-color: #191b1f;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.buttonLogin:hover {
+    background-color: rgb(234, 222, 122);
+    color: #191b1f;
+    border: 1px solid #111111;
+}
+
+.buttonRegistration:hover {
+    background-color: #16ea1a;
+    color: #191b1f;
+    border: 1px solid #111111;
+}

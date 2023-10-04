@@ -1,0 +1,14 @@
+.buyButton {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 7px 50px;
+    background-color: rgb(14, 8, 8);
+    color: #fff;
+    font-family: Martian Mono, sans-serif;
+}
+
+.buyButton:hover {
+    background-color: #16ea1a;
+    color: black;
+    border: 1px solid #111111;
+}

@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.navitem,
+.login {
+    font-family: Martian Mono, sans-serif;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.navitem:hover {
+    background-color: rgb(234, 222, 122);
+    color: #000000;
+}
+
+.login:hover {
+    background-color: #16ea1a;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navitem,
+    .login {
+        margin-top: 10px;
+    }
+}
