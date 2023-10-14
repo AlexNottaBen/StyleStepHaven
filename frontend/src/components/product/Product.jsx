@@ -1,3 +1,4 @@
+// Product.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Product.module.css";
@@ -10,12 +11,12 @@ const Product = () => {
 
     return (
         <>
-            {products.map((product, id) => (
-                <form className={styles.productForm} key={id}>
+            {products.map((product) => (
+                <form className={styles.productForm} key={product.id}>
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <img className={styles.img} src={hoveredImg === id ? product.hoveredImageUrl : product.imageUrl} alt={product.name} onMouseOver={() => setHoveredImg(id)} onMouseOut={() => setHoveredImg(null)} />
+                                <img className={styles.img} src={hoveredImg === product.id ? product.hoveredImageUrl : product.imageUrl} alt={product.name} onMouseOver={() => setHoveredImg(product.id)} onMouseOut={() => setHoveredImg(null)} />
                             </div>
                             <div className="col">
                                 <Link to={`/singleProduct/${product.id}`}>
@@ -30,7 +31,7 @@ const Product = () => {
                             </div>
                             <div className="col">
                                 <br />
-                                <BuyButton />
+                                <BuyButton product={product} />
                             </div>
                         </div>
                     </div>
