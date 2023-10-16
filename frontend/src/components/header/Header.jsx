@@ -17,9 +17,9 @@ const Header = () => {
     };
 
     const handleRemoveProduct = (index) => {
-        const updatedOrders = [...orders];
-        updatedOrders.splice(index, 1);
-        setOrders(updatedOrders);
+        // const updatedOrders = [...orders]; // это ломает код
+        orders.splice(index, 1); // используем исходный массив
+        setOrders(orders);
     };
 
     return (
