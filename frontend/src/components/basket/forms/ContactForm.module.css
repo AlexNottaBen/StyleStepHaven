@@ -1,0 +1,49 @@
+.contactForm {
+    border: 2px solid #14c923;
+    border-radius: 7px;
+    padding: 25px;
+}
+
+.nameInput {
+    background: #191b1f;
+    border-radius: 5px;
+    margin: 10px 20px 0px 102px;
+    border: 1px solid #ccc;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.numberInput {
+    background: #191b1f;
+    border-radius: 5px;
+    margin: 10px 20px 0px 40px;
+    border: 1px solid #ccc;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.cityInput {
+    background: #191b1f;
+    border-radius: 5px;
+    margin: 10px 20px 0px 118px;
+    border: 1px solid #ccc;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.button {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 7px 50px;
+    background-color: rgb(14, 8, 8);
+    color: #fff;
+    font-family: Martian Mono, sans-serif;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #16ea1a;
+    color: black;
+    border: 1px solid #111111;
+}

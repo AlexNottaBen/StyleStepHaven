@@ -1,13 +1,18 @@
+// BuyButton.jsx
+import React from "react";
 import styles from "./BuyButton.module.css";
+import orders from "../../data/orders";
 
-const BuyButton = () => {
-    const handleClick = (event) => {
+const BuyButton = ({ product }) => {
+    const handleBuyClick = (event) => {
         event.preventDefault();
-        // Добавьте здесь логику, которая должна выполняться при нажатии на кнопку
+
+        console.log("Click handled!");
+        orders.push(product);
     };
 
     return (
-        <button className={styles.buyButton} onClick={handleClick}>
+        <button className={styles.buyButton} onClick={handleBuyClick}>
             Buy
         </button>
     );

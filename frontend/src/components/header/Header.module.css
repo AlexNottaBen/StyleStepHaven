@@ -4,6 +4,7 @@
 }
 
 .header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,4 +46,53 @@
     .login {
         margin-top: 10px;
     }
+}
+
+.active {
+    background-color: rgb(234, 222, 122);
+    color: #000000;
+}
+
+header .shop {
+    position: absolute;
+    top: 30px;
+    right: 500px;
+    width: 450px;
+    background: #16ea1a;
+}
+
+.img {
+    width: 70px;
+    height: 60px;
+    float: left;
+    margin-right: 20px;
+}
+
+.name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #797979;
+    font-weight: 600;
+}
+
+.shopCart {
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.deleteIcon {
+    color: #ca5252;
+    float: right;
+    position: relative;
+    top: -50px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+.deleteIcon:hover {
+    color: rgb(207, 7, 7);
+    transform: scale(1.5);
 }
