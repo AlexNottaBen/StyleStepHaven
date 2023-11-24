@@ -49,10 +49,8 @@
     background-color: #191b1f;
     color: #ffffff;
     font-size: 20px;
-<<<<<<< HEAD
+
     transition: 0.35s;
-=======
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
 }
 
 .buttonRegistration {
@@ -63,28 +61,21 @@
     background-color: #191b1f;
     color: #ffffff;
     font-size: 20px;
-<<<<<<< HEAD
+
     transition: 0.35s;
-=======
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
 }
 
 .buttonLogin:hover {
     background-color: rgb(234, 222, 122);
     color: #191b1f;
     border: 1px solid #111111;
-<<<<<<< HEAD
     transition: 0.35s;
-=======
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
 }
 
 .buttonRegistration:hover {
     background-color: #16ea1a;
     color: #191b1f;
     border: 1px solid #111111;
-<<<<<<< HEAD
+
     transition: 0.35s;
-=======
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
 }

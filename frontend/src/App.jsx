@@ -11,12 +11,12 @@ import Registration from "./components/login/Registration";
 import SingleProduct from "./components/product/SingleProduct";
 import styles from "./App.module.css";
 import products from "./data/products";
-<<<<<<< HEAD
+
 import Men from "./components/catalog/Men.jsx";
 import Women from "./components/catalog/Women.jsx";
 import Kids from "./components/catalog/Kids.jsx";
-=======
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
+
+
 
 function App() {
     return (
@@ -31,12 +31,12 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
-<<<<<<< HEAD
+
                     <Route path="men" element={<Men />} />
                     <Route path="women" element={<Women />} />
                     <Route path="kids" element={<Kids />} />
-=======
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
+
+
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />

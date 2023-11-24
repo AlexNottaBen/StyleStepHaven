@@ -38,11 +38,11 @@ const ContactForm = () => {
                 <input className={styles.cityInput} type="text" id="city" name="city" value={formData.city} onChange={handleChange} required />
             </div>
             <button className={styles.button} type="submit">
-<<<<<<< HEAD
+
                 Изменить
-=======
+
                 Submit
->>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
+
             </button>
         </form>
     );
