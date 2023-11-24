@@ -57,9 +57,12 @@ const DeliveryForm = () => {
                     <option value="cash">Наличные</option>
                 </select>
             </div>
+<<<<<<< HEAD
+=======
             <button className={styles.button} type="submit">
                 Submit
             </button>
+>>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
         </form>
     );
 };

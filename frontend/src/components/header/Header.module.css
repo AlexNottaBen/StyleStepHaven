@@ -3,14 +3,31 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
+body {
+    padding-top: 85px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+=======
 .header {
     position: relative;
+>>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #000000;
     color: #fff;
     padding: 10px 20px;
+<<<<<<< HEAD
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+=======
+>>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
 }
 
 .navitem,
@@ -58,7 +75,13 @@ header .shop {
     top: 30px;
     right: 500px;
     width: 450px;
+<<<<<<< HEAD
+    background: #222b31;
+    border-radius: 10px;
+    z-index: 999;
+=======
     background: #16ea1a;
+>>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
 }
 
 .img {
@@ -96,3 +119,17 @@ header .shop {
     color: rgb(207, 7, 7);
     transform: scale(1.5);
 }
+<<<<<<< HEAD
+
+.cartCount {
+    position: absolute;
+    top: 15px;
+    right: 1;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 10px;
+}
+=======
+>>>>>>> 7f2da322bd25957f53d2c3ef799950f510ec7aef
