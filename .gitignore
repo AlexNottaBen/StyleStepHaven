@@ -1,2 +1,4 @@
 node_modules
-backend/base/__pycache__/
+__pycache__
+database.config.yaml
+backend/database.config.yaml
