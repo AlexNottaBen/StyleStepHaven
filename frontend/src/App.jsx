@@ -12,6 +12,12 @@ import SingleProduct from "./components/product/SingleProduct";
 import styles from "./App.module.css";
 import products from "./data/products";
 
+import Men from "./components/catalog/Men.jsx";
+import Women from "./components/catalog/Women.jsx";
+import Kids from "./components/catalog/Kids.jsx";
+
+
+
 function App() {
     return (
         <div className="App">
@@ -25,6 +31,12 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
+
+                    <Route path="men" element={<Men />} />
+                    <Route path="women" element={<Women />} />
+                    <Route path="kids" element={<Kids />} />
+
+
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />

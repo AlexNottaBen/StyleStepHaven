@@ -1,0 +1,55 @@
+/* ShoeCategories.module.css */
+
+.tileContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    width: 400px;
+    height: 400px;
+}
+
+.man {
+    background-image: url(https://marvel-b1-cdn.bc0a.com/f00000000114841/www.florsheim.com/styleguide/resources/images/about/styleTips/FW22-FL-BlogUpdate-TheseAreTheSixShoesMenNeed-ArticleImage2-Desktop.jpg);
+    background-size: cover;
+}
+
+.woman {
+    background-image: url(https://images.pexels.com/photos/2285500/pexels-photo-2285500.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+    background-size: cover;
+}
+
+.child {
+    background-image: url(https://media.istockphoto.com/id/518868426/photo/new-sneakers-on-boys-feet.jpg?s=612x612&w=0&k=20&c=GSlpksRijdwFfVRvIL8LZkkwmlKUgLPduQ8Y8HTzQIo=);
+    background-size: cover;
+}
+
+.tile .container {
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.tile .container:hover {
+    color: #333;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: rgb(104, 220, 141);
+    -webkit-transform: rotateZ(10deg);
+    -ms-transform: rotateZ(10deg);
+    transform: rotateZ(10deg);
+}

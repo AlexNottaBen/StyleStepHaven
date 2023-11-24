@@ -1,10 +1,11 @@
 import Product from "../product/Product";
+import ShoeCategories from "../shoeCategories/ShoeCategories";
 import styles from "./Home.module.css";
 
 const Home = () => {
     return (
         <>
-            <h1>List of products</h1>
+            <ShoeCategories />
             <Product />
         </>
     );

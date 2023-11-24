@@ -28,12 +28,13 @@ const Login = () => {
             <form className={styles.loginForm} onSubmit={handleSubmit}>
                 <div className={styles.email}>
                     <label htmlFor="email">Email:</label>
-                    <input className={styles.emailInput} type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                    <input className={styles.emailInput} type="email" id="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange} required />
                 </div>
                 <div className={styles.password}>
                     <label htmlFor="password">Password:</label>
-                    <input className={styles.passwordInput} type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+                    <input className={styles.passwordInput} type="password" id="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} required />
                 </div>
+
                 <button className={styles.buttonLogin} type="submit">
                     Login
                 </button>

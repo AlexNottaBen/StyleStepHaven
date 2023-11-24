@@ -38,7 +38,11 @@ const ContactForm = () => {
                 <input className={styles.cityInput} type="text" id="city" name="city" value={formData.city} onChange={handleChange} required />
             </div>
             <button className={styles.button} type="submit">
+
+                Изменить
+
                 Submit
+
             </button>
         </form>
     );
