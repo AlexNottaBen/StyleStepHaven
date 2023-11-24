@@ -1,5 +1,0 @@
-NAME: 'StyleStepHaven'
-USER: 'root'
-PASSWORD: ''
-HOST: '/opt/lampp/var/mysql/mysql.sock'
-PORT: 3306
