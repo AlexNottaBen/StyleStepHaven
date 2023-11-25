@@ -1,5 +1,5 @@
 NAME: "StyleStepHaven"
 USER: "root"
 PASSWORD: ""
-HOST: "localhost"
+HOST: "localhost or socket"
 PORT: 3306

@@ -59,11 +59,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny'
-    ]
-}
+REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"]}
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
@@ -114,7 +110,6 @@ DATABASES = {
         "PASSWORD": database_config["PASSWORD"],
         "HOST": database_config["HOST"],
         "PORT": database_config["PORT"],
-        "HOST": database_config["HOST"],
     }
 }
 
