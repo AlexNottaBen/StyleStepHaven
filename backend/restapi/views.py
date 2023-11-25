@@ -11,6 +11,7 @@ class ProductView(APIView):
     def get(self, request):
         output = [
             {
+                "id": output.id,
                 "name": output.name,
                 "description": output.description,
                 "department": output.department,
