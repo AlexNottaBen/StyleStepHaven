@@ -1,6 +1,5 @@
-NAME: 'StyleStepHaven'
-USER: 'root'
-PASSWORD: ''
-HOST: 'localhost'
+NAME: "StyleStepHaven"
+USER: "root"
+PASSWORD: ""
+HOST: "localhost"
 PORT: 3306
-HOST: '/opt/lampp/var/mysql/mysql.sock'
