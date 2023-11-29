@@ -8,7 +8,7 @@
 .productContainer {
     display: flex;
     flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку при нехватке места */
-    justify-content: space-between; /* Равномерное распределение пространства между элементами */
+    justify-content: baseline; /* Равномерное распределение пространства между элементами */
 }
 .productForm {
     width: 450px;
