@@ -1,12 +1,27 @@
 import styles from "./SingleProduct.module.css";
 import { useParams } from "react-router-dom";
-import products from "../../data/products";
 import BuyButton from "../buttons/BuyButton";
 import Button from "../buttons/Button";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const SingleProduct = () => {
     const { id } = useParams();
-    const product = products.find((product) => product.id === parseInt(id));
+    const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const apiUrl = `http://127.0.0.1:8000/${id}`;
+                const response = await axios.get(apiUrl);
+                setProduct(response.data);
+            } catch (error) {
+                console.error("Ошибка при получении данных:", error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
 
     if (!product) {
         return <div>Product not found</div>;
@@ -17,7 +32,7 @@ const SingleProduct = () => {
             <h1>{product.name}</h1>
             <div className="row">
                 <div className="col">
-                    <img className={styles.img} src={product.imageUrl} alt={product.name} />
+                    <img className={styles.img} src={product.image_url} alt={product.name} />
                 </div>
 
                 <div className="col">

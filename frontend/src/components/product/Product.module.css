@@ -5,9 +5,14 @@
     border-radius: 15px;
     padding: 5px;
 }
-
+.productContainer {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку при нехватке места */
+    justify-content: space-between; /* Равномерное распределение пространства между элементами */
+}
 .productForm {
-    display: inline-block;
+    width: 450px;
+    height: 470px;
     margin: 10px;
     border: 1px solid #100f0f;
     padding: 10px;
