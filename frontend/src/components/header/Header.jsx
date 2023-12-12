@@ -79,24 +79,42 @@ const Header = () => {
                                 <div className={styles.shop}>
                                     {cartItems.map((item) => (
                                         <div className={styles.shopCart} key={item.id}>
-                                            {item.imageUrl && <img className={styles.img} src={item.imageUrl} alt={item.name} />}
-                                            <p className={styles.name}>
-                                                Count: {item.count}, Name: {item.name}
-                                            </p>
-                                            <p className={styles.price}>Price: {item.price}</p>
-
-                                            <div className={styles.quantity}>
-                                                <button onClick={() => handleDecrement(item.id)}>-</button>
-                                                <span>{item.count}</span>
-                                                <button onClick={() => handleIncrement(item.id)}>+</button>
+                                            <div className="row ">
+                                                <div className="col-3">{item.image_url && <img className={styles.img} src={item.image_url} alt={item.name} />}</div>
+                                                <div className="col-8">
+                                                    <p className={styles.name}>Name: {item.name}</p>
+                                                    <p className={styles.price}>Price: {item.price}</p>
+                                                </div>
+                                                <div className="col">
+                                                    <FaTrash className={styles.deleteIcon} onClick={() => handleRemoveProduct(item.id)} />
+                                                </div>
                                             </div>
 
-                                            <FaTrash className={styles.deleteIcon} onClick={() => handleRemoveProduct(item.id)} />
+                                            <div className="row">
+                                                <div className="col">
+                                                    <div className={styles.quantity}>
+                                                        <button className={styles.increment} onClick={() => handleDecrement(item.id)}>
+                                                            ➖
+                                                        </button>
+                                                        <span>{item.count}</span>
+                                                        <button className={styles.decrement} onClick={() => handleIncrement(item.id)}>
+                                                            ➕
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div className="col">
+                                                    <NavLink to="/basket" className={styles.cartButton}>
+                                                        <span className={styles.cart}>Go to cart</span>
+                                                    </NavLink>
+                                                </div>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
                             ) : (
-                                <div className={styles.shop}>No products</div>
+                                <div className={styles.shop}>
+                                    <span>No products</span>
+                                </div>
                             )}
                         </div>
                     </div>

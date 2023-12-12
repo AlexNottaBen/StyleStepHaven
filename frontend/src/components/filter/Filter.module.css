@@ -5,7 +5,7 @@
     margin-bottom: 20px;
 }
 
-button {
+.button {
     background-color: #282928;
     color: white;
     border: none;
@@ -20,17 +20,17 @@ button {
     margin: 5px;
 }
 
-button:last-child {
+.button:last-child {
     margin-right: 0; /* У последней кнопки нет правого отступа */
 }
 
-button:hover,
-button:active,
-button:focus {
+.button:hover,
+.button:active,
+.button:focus {
     background-color: #45a049; /* Цвет для наведения и активного состояния */
 }
 
-button:focus {
+.button:focus {
     outline: none; /* Убирает стандартный браузерный контур фокуса */
 }
 

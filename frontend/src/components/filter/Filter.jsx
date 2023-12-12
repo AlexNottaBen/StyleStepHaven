@@ -12,16 +12,16 @@ const Filter = ({ onFilterChange }) => {
 
     return (
         <div className={styles.filterContainer}>
-            <button className={activeFilter === "all" ? styles.activeButton : ""} onClick={() => handleButtonClick("all")}>
+            <button className={`${styles.button} ${activeFilter === "all" ? styles.activeButton : ""}`} onClick={() => handleButtonClick("all")}>
                 All
             </button>
-            <button className={activeFilter === "men" ? styles.activeButton : ""} onClick={() => handleButtonClick("men")}>
+            <button className={`${styles.button} ${activeFilter === "men" ? styles.activeButton : ""}`} onClick={() => handleButtonClick("men")}>
                 Men's
             </button>
-            <button className={activeFilter === "women" ? styles.activeButton : ""} onClick={() => handleButtonClick("women")}>
+            <button className={`${styles.button} ${activeFilter === "women" ? styles.activeButton : ""}`} onClick={() => handleButtonClick("women")}>
                 Women's
             </button>
-            <button className={activeFilter === "kids" ? styles.activeButton : ""} onClick={() => handleButtonClick("kids")}>
+            <button className={`${styles.button} ${activeFilter === "kids" ? styles.activeButton : ""}`} onClick={() => handleButtonClick("kids")}>
                 Kids
             </button>
         </div>
