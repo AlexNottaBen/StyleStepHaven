@@ -1,4 +1,3 @@
-// Product.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Product.module.css";
@@ -6,16 +5,31 @@ import Button from "../buttons/Button";
 import BuyButton from "../buttons/BuyButton";
 import axios from "axios";
 
-const Product = ({ filter }) => {
-    const [hoveredImg, setHoveredImg] = useState(null);
-    const [products, setProducts] = useState([]);
+interface ProductProps {
+    filter: string;
+}
+
+interface ProductData {
+    id: number;
+    hovered_image_url: string;
+    image_url: string;
+    name: string;
+    price: number;
+    department: string;
+    imageUrl: string; // Добавьте это
+    count: number;
+}
+
+const Product: React.FC<ProductProps> = ({ filter }) => {
+    const [hoveredImg, setHoveredImg] = useState<number | null>(null);
+    const [products, setProducts] = useState<ProductData[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const apiUrl = "http://127.0.0.1:8000/";
-                const response = await axios.get(apiUrl);
+                const response = await axios.get<ProductData[]>(apiUrl);
                 setProducts(response.data);
                 setLoading(false);
             } catch (error) {
@@ -52,7 +66,7 @@ const Product = ({ filter }) => {
                             <h3 className={styles.name}>{product.name}</h3>
                         </Link>
                         <p>Price: {product.price}</p>
-                        <Button id={product.id} />
+                        <Button id={product.id.toString()} />
                         <br />
                         <BuyButton product={product} />
                     </form>

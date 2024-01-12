@@ -1,11 +1,14 @@
-// ProductFilter.js
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import styles from "./Filter.module.css";
 
-const Filter = ({ onFilterChange }) => {
+interface FilterProps {
+    onFilterChange: (category: string) => void;
+}
+
+const Filter: FC<FilterProps> = ({ onFilterChange }) => {
     const [activeFilter, setActiveFilter] = useState("all");
 
-    const handleButtonClick = (category) => {
+    const handleButtonClick = (category: string) => {
         setActiveFilter(category);
         onFilterChange(category);
     };

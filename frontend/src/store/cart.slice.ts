@@ -3,8 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface CartItem {
     id: number;
     name: string; // Добавляем поле с названием продукта
-    price: string; // Добавляем поле с ценой продукта
-    imageUrl: string; // Добавляем поле с URL изображения продукта
+    price: number; // Добавляем поле с ценой продукта
+    image_url: string; // Добавляем поле с URL изображения продукта
     count: number;
 }
 

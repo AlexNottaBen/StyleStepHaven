@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Registration.module.css";
 
-const Registration = () => {
-    const [formData, setFormData] = useState({
+interface FormData {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+}
+
+const Registration: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -18,9 +25,9 @@ const Registration = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //Здесь можно добавить логику для отправки данных на сервер, нет это не чатгпт писал а я))))
+        // Здесь можно добавить логику для отправки данных на сервер
         console.log("Отправка данных:", formData);
     };
 

@@ -5,7 +5,7 @@
     border: 5px solid #16ea1a;
     border-radius: 10px;
     font-family: Kanit, sans-serif;
-    height: 100vh;
+    height: 56vh;
 }
 
 .email,
@@ -17,7 +17,7 @@
 .passwordInput {
     background: #191b1f;
     border-radius: 5px;
-    margin: 10px;
+    margin: 10px 20px 0px 20px; /* Adjusted margin values here */
     border: 1px solid #ccc;
     color: #ffffff;
     font-size: 20px;
@@ -31,28 +31,13 @@
     margin: 10px 20px 0px 10px;
 }
 
-.emailInput:focus {
-    outline: none;
-    border-color: #16ea1a;
-}
-
+.emailInput:focus,
 .passwordInput:focus {
     outline: none;
     border-color: #16ea1a;
 }
 
-.buttonLogin {
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 10px;
-    background-color: #191b1f;
-    color: #ffffff;
-    font-size: 20px;
-
-    transition: 0.35s;
-}
-
+.buttonLogin,
 .buttonRegistration {
     border: 1px solid #ffffff;
     border-radius: 5px;
@@ -61,7 +46,6 @@
     background-color: #191b1f;
     color: #ffffff;
     font-size: 20px;
-
     transition: 0.35s;
 }
 
@@ -69,13 +53,10 @@
     background-color: rgb(234, 222, 122);
     color: #191b1f;
     border: 1px solid #111111;
-    transition: 0.35s;
 }
 
 .buttonRegistration:hover {
     background-color: #16ea1a;
     color: #191b1f;
     border: 1px solid #111111;
-
-    transition: 0.35s;
 }

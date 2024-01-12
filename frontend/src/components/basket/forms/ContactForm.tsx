@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import styles from "../forms/ContactForm.module.css";
 
-const ContactForm = () => {
-    const [formData, setFormData] = useState({
+interface FormData {
+    name: string;
+    phone: string;
+    city: string;
+}
+
+const ContactForm: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
         name: "",
         phone: "",
         city: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
+        setFormData((prevFormData) => ({
+            ...prevFormData,
             [name]: value,
-        });
+        }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Здесь можно добавить логику для отправки данных на сервер
         console.log("Отправка данных:", formData);
@@ -38,11 +44,7 @@ const ContactForm = () => {
                 <input className={styles.cityInput} type="text" id="city" name="city" value={formData.city} onChange={handleChange} required />
             </div>
             <button className={styles.button} type="submit">
-
-                Изменить
-
                 Submit
-
             </button>
         </form>
     );

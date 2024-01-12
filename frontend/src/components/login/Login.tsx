@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
-
 import styles from "./Login.module.css";
 
-const Login = () => {
-    const [formData, setFormData] = useState({
+interface FormData {
+    email: string;
+    password: string;
+}
+
+const Login: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
         email: "",
         password: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -17,7 +21,7 @@ const Login = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Здесь можно добавить логику для отправки данных на сервер
         console.log("Отправка данных:", formData);

@@ -6,39 +6,40 @@ import { FaTrash } from "react-icons/fa";
 import styles from "./Header.module.css";
 import logo from "/public/logo.png";
 import Search from "../search/Search";
-
 import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store"; // Предполагается, что у вас есть тип RootState
 import { cartActions } from "../../store/cart.slice";
-
 import ordersData from "../../data/orders";
 
-const Header = () => {
+interface HeaderProps {}
+
+const Header: React.FC<HeaderProps> = () => {
     const [isActive, setIsActive] = useState(false);
-    const dispatch = useDispatch(); // Добавляем хук dispatch
-    const [orders, setOrders] = useState(ordersData); // Используем useState для хранения заказов
+    const dispatch = useDispatch();
+    const [orders, setOrders] = useState(ordersData);
 
     const toggleActive = () => {
         setIsActive((prev) => !prev);
     };
 
-    const cartItems = useSelector((state) => state.cart.items);
+    const cartItems = useSelector((state: RootState) => state.cart.items);
 
     const handleRemoveProduct = useCallback(
-        (id) => {
+        (id: number) => {
             dispatch(cartActions.remove(id));
         },
         [dispatch]
     );
 
     const handleIncrement = useCallback(
-        (id) => {
-            dispatch(cartActions.add(cartItems.find((item) => item.id === id)));
+        (id: number) => {
+            dispatch(cartActions.add(cartItems.find((item) => item.id === id)!));
         },
         [dispatch, cartItems]
     );
 
     const handleDecrement = useCallback(
-        (id) => {
+        (id: number) => {
             dispatch(cartActions.decrease(id));
         },
         [dispatch]
@@ -46,7 +47,7 @@ const Header = () => {
 
     useEffect(() => {
         const totalItemsCount = cartItems.reduce((total, item) => total + item.count, 0);
-        console.log(totalItemsCount); // Это общее количество товаров в корзине
+        console.log(totalItemsCount);
     }, [cartItems]);
 
     return (
@@ -55,7 +56,7 @@ const Header = () => {
 
             <Search />
             <nav className={styles.navigation}>
-                <NavLink className={`${styles.navitem} ${isActive ? styles.active : ""}`} onClick={toggleActive}>
+                <NavLink to="#" className={`${styles.navitem} ${isActive ? styles.active : ""}`} onClick={toggleActive}>
                     <FontAwesomeIcon icon={faShoppingCart} />
                     {cartItems.length > 0 && <span className={styles.cartCount}>{cartItems.reduce((total, item) => total + item.count, 0)}</span>}
                 </NavLink>

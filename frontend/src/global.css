@@ -1,0 +1,9 @@
+body {
+    background-color: #100f0f; /* Цвет фона (в данном случае, черный) */
+    color: #fff; /* Цвет текста (в данном случае, белый) */
+}
+h1 {
+    text-align: center;
+    padding: 10px;
+    font-family: Kanit, sans-serif;
+}

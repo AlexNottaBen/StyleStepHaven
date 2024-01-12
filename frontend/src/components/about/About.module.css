@@ -1,0 +1,39 @@
+.text {
+    font-size: 22px;
+    font-style: italic;
+}
+
+.welcome {
+    font-size: 5rem;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 1px #000000, 2px 2px 1px #16ea1a;
+    text-align: center;
+}
+
+.about {
+    overflow: hidden;
+}
+
+.about_us {
+    padding: 50px;
+}
+
+.historyBookIcon,
+.teamIcon,
+.whyUsIcon,
+.contactUsIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.history,
+.mission,
+.team,
+.why_us,
+.contact_us {
+    font-size: 3rem;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 1px #000000, 2px 2px 1px #16ea1a, 3px 3px 1px rgb(255, 0, 0);
+    text-align: initial;
+    border-radius: 100%;
+}

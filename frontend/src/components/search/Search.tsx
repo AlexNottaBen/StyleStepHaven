@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import styles from "./Search.module.css";
 
-const Search = () => {
-    const [searchTerm, setSearchTerm] = useState("");
+const Search: React.FC = () => {
+    const [searchTerm, setSearchTerm] = useState<string>("");
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
     };
 
-    const handleSearch = (e) => {
+    const handleSearch = (e: FormEvent) => {
         e.preventDefault();
         console.log(`Вы ищете: ${searchTerm}`);
     };

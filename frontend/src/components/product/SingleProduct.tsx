@@ -5,15 +5,25 @@ import Button from "../buttons/Button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SingleProduct = () => {
-    const { id } = useParams();
-    const [product, setProduct] = useState(null);
+interface ProductData {
+    id: number;
+    image_url: string;
+    name: string;
+    price: number;
+    description: string;
+    imageUrl: string; // Добавлено поле imageUrl
+    count: number;
+}
+
+const SingleProduct: React.FC = () => {
+    const { id = "" } = useParams<{ id: string }>();
+    const [product, setProduct] = useState<ProductData | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const apiUrl = `http://127.0.0.1:8000/${id}`;
-                const response = await axios.get(apiUrl);
+                const response = await axios.get<ProductData>(apiUrl);
                 setProduct(response.data);
             } catch (error) {
                 console.error("Ошибка при получении данных:", error);
@@ -40,7 +50,7 @@ const SingleProduct = () => {
                     <p>Description: {product.description}</p>
                     <div className="row">
                         <div className="col">
-                            <Button />
+                            <Button id={id} />
                         </div>
                         <div className="col">
                             <br />

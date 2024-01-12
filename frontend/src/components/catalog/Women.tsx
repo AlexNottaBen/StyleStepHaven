@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "../product/Product";
 
-const Women = () => {
+const Women: React.FC = () => {
     return (
         <div>
             <h2>Women's Products</h2>

@@ -1,9 +1,10 @@
+import { FC } from "react";
 import styles from "./Footer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTelegram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-const Footer = () => {
+const Footer: FC = () => {
     return (
         <footer className={styles.footer}>
             <div className="container text-center">

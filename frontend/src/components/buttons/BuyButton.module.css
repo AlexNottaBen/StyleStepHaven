@@ -5,10 +5,22 @@
     background-color: rgb(14, 8, 8);
     color: #fff;
     font-family: Martian Mono, sans-serif;
+
+    overflow: hidden;
 }
 
 .buyButton:hover {
     background-color: #16ea1a;
     color: black;
     border: 1px solid #111111;
+    transform: scale(1.1);
+}
+
+.buyButton:before {
+    font-family: FontAwesome;
+    content: "\f07a";
+    position: absolute;
+    top: 11px;
+    left: -30px;
+    transition: all 200ms ease;
 }

@@ -1,15 +1,15 @@
-// Home.js
 import React, { useState } from "react";
 import Product from "../product/Product";
 import ShoeCategories from "../shoeCategories/ShoeCategories";
-
 import styles from "./Home.module.css";
 import Filter from "../filter/Filter";
 
-const Home = () => {
-    const [filter, setFilter] = useState("all");
+interface HomeProps {}
 
-    const handleFilterChange = (category) => {
+const Home: React.FC<HomeProps> = () => {
+    const [filter, setFilter] = useState<string>("all");
+
+    const handleFilterChange = (category: string) => {
         setFilter(category);
     };
 
