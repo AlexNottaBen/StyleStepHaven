@@ -1,9 +1,9 @@
 from rest_framework.filters import SearchFilter
-from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from django_filters import OrderingFilter
+
 from .models import Product
 from .serializer import ProductSerializer
-from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
 
 
 # before
@@ -40,3 +40,4 @@ class ProductViewSet(ModelViewSet):
     filter_backends = [
         SearchFilter,
     ]
+    search_fields = ["name", "description"]
