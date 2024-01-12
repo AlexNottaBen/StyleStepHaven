@@ -2,3 +2,4 @@ node_modules
 __pycache__
 database.config.yaml
 backend/database.config.yaml
+venv
