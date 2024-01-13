@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = () => {
                                     {cartItems.map((item) => (
                                         <div className={styles.shopCart} key={item.id}>
                                             <div className="row ">
-                                                <div className="col-3">{item.image_url && <img className={styles.img} src={item.image_url} alt={item.name} />}</div>
+                                                <div className="col-3">{item.image && <img className={styles.img} src={item.image} alt={item.name} />}</div>
                                                 <div className="col-8">
                                                     <p className={styles.name}>Name: {item.name}</p>
                                                     <p className={styles.price}>Price: {item.price}</p>

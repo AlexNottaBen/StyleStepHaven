@@ -6,6 +6,7 @@ export interface CartItem {
     price: number; // Добавляем поле с ценой продукта
     image_url: string; // Добавляем поле с URL изображения продукта
     count: number;
+    image: string;
 }
 
 export interface CartState {
