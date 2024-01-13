@@ -11,13 +11,13 @@ interface ProductProps {
 
 interface ProductData {
     id: number;
-    hovered_image_url: string;
-    image_url: string;
+    image: string;
+    hovered_image: string;
     name: string;
     price: number;
     department: string;
-    imageUrl: string; // Добавьте это
     count: number;
+    imageUrl: string;
 }
 
 const Product: React.FC<ProductProps> = ({ filter }) => {
@@ -28,9 +28,9 @@ const Product: React.FC<ProductProps> = ({ filter }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const apiUrl = "http://127.0.0.1:8000/";
-                const response = await axios.get<ProductData[]>(apiUrl);
-                setProducts(response.data);
+                const apiUrl = "http://127.0.0.1:8000/api/products/";
+                const response = await axios.get(apiUrl);
+                setProducts(response.data.results); // Обновлено для учета структуры данных
                 setLoading(false);
             } catch (error) {
                 console.error("Ошибка при получении данных:", error);
@@ -58,10 +58,10 @@ const Product: React.FC<ProductProps> = ({ filter }) => {
         <div className={styles.productContainer}>
             {loading ? (
                 <p>Загрузка данных...</p>
-            ) : (
+            ) : Array.isArray(filterProducts()) ? (
                 filterProducts().map((product) => (
                     <form className={styles.productForm} key={product.id}>
-                        <img className={styles.img} src={hoveredImg === product.id ? product.hovered_image_url : product.image_url} alt={product.name} onMouseOver={() => setHoveredImg(product.id)} onMouseOut={() => setHoveredImg(null)} />
+                        <img className={styles.img} src={hoveredImg === product.id ? product.hovered_image : product.image} alt={product.name} onMouseOver={() => setHoveredImg(product.id)} onMouseOut={() => setHoveredImg(null)} />
                         <Link key={`link-${product.id}`} to={`/singleProduct/${product.id}`}>
                             <h3 className={styles.name}>{product.name}</h3>
                         </Link>
@@ -71,6 +71,8 @@ const Product: React.FC<ProductProps> = ({ filter }) => {
                         <BuyButton product={product} />
                     </form>
                 ))
+            ) : (
+                <p>Нет данных для отображения</p>
             )}
         </div>
     );

@@ -1,40 +1,47 @@
-import styles from "./SingleProduct.module.css";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BuyButton from "../buttons/BuyButton";
 import Button from "../buttons/Button";
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styles from "./SingleProduct.module.css";
 
 interface ProductData {
     id: number;
-    image_url: string;
     name: string;
     price: number;
     description: string;
-    imageUrl: string; // Добавлено поле imageUrl
+    image: string;
     count: number;
+    imageUrl: string;
 }
 
 const SingleProduct: React.FC = () => {
     const { id = "" } = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductData | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const apiUrl = `http://127.0.0.1:8000/${id}`;
+                const apiUrl = `http://127.0.0.1:8000/api/products/${id}/`;
                 const response = await axios.get<ProductData>(apiUrl);
                 setProduct(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error("Ошибка при получении данных:", error);
+                setLoading(false);
             }
         };
 
         fetchData();
     }, [id]);
 
+    if (loading) {
+        return <div>Загрузка данных...</div>;
+    }
+
     if (!product) {
-        return <div>Product not found</div>;
+        return <div>Продукт не найден</div>;
     }
 
     return (
@@ -42,12 +49,12 @@ const SingleProduct: React.FC = () => {
             <h1>{product.name}</h1>
             <div className="row">
                 <div className="col">
-                    <img className={styles.img} src={product.image_url} alt={product.name} />
+                    <img className={styles.img} src={product.image} alt={product.name} />
                 </div>
 
                 <div className="col">
-                    <p>Price: {product.price} </p>
-                    <p>Description: {product.description}</p>
+                    <p>Цена: {product.price} </p>
+                    <p>Описание: {product.description}</p>
                     <div className="row">
                         <div className="col">
                             <Button id={id} />
