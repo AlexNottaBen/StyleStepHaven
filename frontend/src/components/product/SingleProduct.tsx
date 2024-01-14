@@ -28,7 +28,7 @@ const SingleProduct: React.FC = () => {
                 setProduct(response.data);
                 setLoading(false);
             } catch (error) {
-                console.error("Ошибка при получении данных:", error);
+                console.error("Error while receiving data:", error);
                 setLoading(false);
             }
         };
@@ -37,11 +37,11 @@ const SingleProduct: React.FC = () => {
     }, [id]);
 
     if (loading) {
-        return <div>Загрузка данных...</div>;
+        return <div>Loading data...</div>;
     }
 
     if (!product) {
-        return <div>Продукт не найден</div>;
+        return <div>Product not found</div>;
     }
 
     return (
@@ -53,8 +53,10 @@ const SingleProduct: React.FC = () => {
                 </div>
 
                 <div className="col">
-                    <p>Цена: {product.price} </p>
-                    <p>Описание: {product.description}</p>
+                    <h1 className={styles.price}>Price: {product.price} $ </h1>
+                    <p className={styles.description}>
+                        <strong>Description:</strong> {product.description}
+                    </p>
                     <div className="row">
                         <div className="col">
                             <Button id={id} />

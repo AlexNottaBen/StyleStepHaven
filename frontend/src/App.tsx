@@ -12,6 +12,7 @@ import SingleProduct from "./components/product/SingleProduct";
 import Men from "./components/catalog/Men";
 import Women from "./components/catalog/Women";
 import Kids from "./components/catalog/Kids";
+import SearchPage from "./components/searchPage/SearchPage";
 import styles from "./App.module.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
+                    <Route path="searchPage" element={<SearchPage />} />
 
                     <Route path="men" element={<Men />} />
                     <Route path="women" element={<Women />} />

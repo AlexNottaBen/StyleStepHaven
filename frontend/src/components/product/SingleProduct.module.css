@@ -5,3 +5,12 @@
     padding: 15px;
     border-radius: 25px;
 }
+
+.price {
+    background-color: rgb(106, 202, 82);
+    border-radius: 20px;
+}
+
+.description {
+    font-size: 18px;
+}
