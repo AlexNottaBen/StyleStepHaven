@@ -1,39 +1,14 @@
 from rest_framework.filters import SearchFilter
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from django_filters import OrderingFilter
+from rest_framework.request import Request
+from rest_framework.response import Response
 
 from .models import Product
 from .serializer import ProductSerializer
+from .purchase import Purchase
 
 
-# before
-'''
-# Create your views here.
-class ProductView(APIView):
-
-    def get(self, request):
-        products = [
-            {
-                "id": product.id,
-                "name": product.name,
-                "description": product.description,
-                "department": product.department,
-                "price": product.price,
-                "image_url": product.image_url,
-                "hovered_image_url": product.hovered_image_url,
-            } for product in Product.objects.all()
-        ]
-        return Response(products)
-
-    def post(self, request):
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-'''
-
-
-# after
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -41,3 +16,18 @@ class ProductViewSet(ModelViewSet):
         SearchFilter,
     ]
     search_fields = ["name", "description"]
+
+
+class PurchaseView(APIView):
+    def get(self, request: Request) -> Response:
+        product_id = request.GET.get('id')
+        quantity = request.GET.get('quantity') or 1
+        product = Product.objects.get(id=product_id)
+        price = product.price
+        purchase = Purchase(price, quantity)
+        url = purchase.get_url()
+        return Response({"url": url})
+
+    def post(self, request: Request) -> Response:
+        print(request)
+        return Response({"done": True})
