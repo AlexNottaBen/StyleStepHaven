@@ -50,7 +50,7 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
         e.preventDefault();
 
         try {
-            const response = await fetch("/API-submit-order", {
+            const response = await fetch("/api/submit-order/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

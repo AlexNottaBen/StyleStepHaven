@@ -19,15 +19,15 @@ class ProductViewSet(ModelViewSet):
 
 
 class PurchaseView(APIView):
-    def get(self, request: Request) -> Response:
-        product_id = request.GET.get('id')
-        quantity = request.GET.get('quantity') or 1
-        product = Product.objects.get(id=product_id)
-        price = product.price
-        purchase = Purchase(price, quantity)
-        url = purchase.get_url()
-        return Response({"url": url})
+    # def get(self, request: Request) -> Response:
+    #    product_id = request.GET.get('id')
+    #    quantity = request.GET.get('quantity') or 1
+    #    product = Product.objects.get(id=product_id)
+    #    price = product.price
+    #    purchase = Purchase(price, quantity)
+    #    url = purchase.get_url()
+    #    return Response({"url": url})
 
     def post(self, request: Request) -> Response:
-        print(request)
-        return Response({"done": True})
+        print(request.data)
+        return Response({"done": request.data})
