@@ -8,8 +8,8 @@
 
 .productContainer {
     display: flex;
-    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку при нехватке места */
-    justify-content: baseline; /* Равномерное распределение пространства между элементами */
+    flex-wrap: wrap;
+    justify-content: baseline;
 }
 .productForm {
     width: 450px;
@@ -34,4 +34,21 @@
 
 .name {
     font-family: Kanit, sans-serif;
+}
+
+.nothing_found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.notFoundImage_1 {
+    height: 500px;
+    width: 500px;
+}
+
+.search {
+    overflow: hidden;
 }

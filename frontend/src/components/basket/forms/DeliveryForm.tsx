@@ -46,10 +46,26 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
         });
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Sending data:", formData);
-        onSubmit(formData);
+
+        try {
+            const response = await fetch("/API-submit-order", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                console.log("Заказ успешно отправлен");
+            } else {
+                console.error("Не удалось отправить заказ");
+            }
+        } catch (error) {
+            console.error("Ошибка при отправке заказа:", error);
+        }
     };
 
     const calculateTotalPrice = () => {

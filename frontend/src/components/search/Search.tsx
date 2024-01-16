@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Search: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
-    const [searchResults, setSearchResults] = useState<any[]>([]);
+    const [searchResults, setSearchResults] = useState<string>("");
     const navigate = useNavigate();
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +27,7 @@ const Search: React.FC = () => {
             fetchData();
         } else {
             // Если поисковый запрос пуст, очистим результаты
-            setSearchResults([]);
+            setSearchResults("");
         }
     }, [searchTerm]);
 
