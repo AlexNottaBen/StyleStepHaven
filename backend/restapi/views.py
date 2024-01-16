@@ -19,15 +19,23 @@ class ProductViewSet(ModelViewSet):
 
 
 class PurchaseView(APIView):
-    # def get(self, request: Request) -> Response:
-    #    product_id = request.GET.get('id')
-    #    quantity = request.GET.get('quantity') or 1
-    #    product = Product.objects.get(id=product_id)
-    #    price = product.price
-    #    purchase = Purchase(price, quantity)
-    #    url = purchase.get_url()
-    #    return Response({"url": url})
 
     def post(self, request: Request) -> Response:
-        print(request.data)
-        return Response({"done": request.data})
+        amount: float = 0.0
+        products = request.data.get("order")
+        for product in products:
+            amount += float(product.get("price")) * int(product.get("count"))
+
+        amount_str: str = str(amount)
+
+        integer = int(amount)
+        decimal = amount_str[-2:].replace(".", "")
+        if len(decimal) == 1:
+            decimal += "0"
+
+        print(integer, decimal)
+
+        purchase = Purchase(integer=integer, decimal=decimal)
+        url = purchase.get_url()
+
+        return Response({"url": url})

@@ -59,7 +59,16 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
             });
 
             if (response.ok) {
-                console.log("Заказ успешно отправлен");
+                const responseData = await response.json();
+
+                // Проверка наличия свойства url в объекте
+                if (responseData && responseData.url) {
+                    const url = responseData.url;
+                    console.log("Заказ успешно отправлен.");
+                    window.location.assign(url)
+                } else {
+                    console.error("Ответ сервера не содержит свойства 'url'");
+                }
             } else {
                 console.error("Не удалось отправить заказ");
             }
