@@ -65,7 +65,9 @@ class ProductViewSet(ModelViewSet):
 
 
 
-
+@extend_schema(
+    summary="Submit order"
+)
 class PurchaseView(APIView):
 
     def post(self, request: Request) -> Response:
