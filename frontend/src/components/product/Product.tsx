@@ -65,7 +65,7 @@ const Product: React.FC<ProductProps> = ({ filter }) => {
                         <Link key={`link-${product.id}`} to={`/singleProduct/${product.id}`}>
                             <h3 className={styles.name}>{product.name}</h3>
                         </Link>
-                        <p>Price: {product.price}</p>
+                        <p>Price: {product.price} ₴</p>
                         <Button id={product.id.toString()} />
                         <br />
                         <BuyButton product={product} />

@@ -65,11 +65,12 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
                 if (responseData && responseData.url) {
                     const url = responseData.url;
                     console.log("Заказ успешно отправлен.");
-                    window.location.assign(url)
+                    window.location.assign(url);
                 } else {
                     console.error("Ответ сервера не содержит свойства 'url'");
                 }
-            } else {
+            }
+            {
                 console.error("Не удалось отправить заказ");
             }
         } catch (error) {
@@ -80,9 +81,9 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
     const calculateTotalPrice = () => {
         if (cartItems && cartItems.length > 0) {
             const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price) * item.count, 0);
-            return `$${totalPrice.toFixed(2)}`;
+            return ` ${totalPrice.toFixed(2)} ₴`;
         }
-        return "$0.00";
+        return "0.00 ₴";
     };
 
     const handleIncrement = (id: number) => {
@@ -106,7 +107,7 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
                     {cartItems && cartItems.length > 0 ? (
                         cartItems.map((item) => (
                             <li key={item.id}>
-                                {item.name} - Quantity: {item.count} Price - {item.price}
+                                {item.name} - Quantity: {item.count} Price - {item.price} ₴
                                 <button type="button" onClick={() => handleIncrement(item.id)}>
                                     ➕
                                 </button>

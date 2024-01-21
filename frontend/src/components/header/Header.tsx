@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = () => {
                                                 <div className="col-3">{item.image && <img className={styles.img} src={item.image} alt={item.name} />}</div>
                                                 <div className="col-8">
                                                     <p className={styles.name}>Name: {item.name}</p>
-                                                    <p className={styles.price}>Price: {item.price}</p>
+                                                    <p className={styles.price}>Price: {item.price} ₴</p>
                                                 </div>
                                                 <div className="col">
                                                     <FaTrash className={styles.deleteIcon} onClick={() => handleRemoveProduct(item.id)} />

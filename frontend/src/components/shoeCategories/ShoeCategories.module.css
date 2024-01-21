@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 50px;
+    padding: 1em;
 }
 
 .tile {
@@ -18,8 +18,8 @@
     text-align: center;
     text-decoration: none;
     color: #ffffff;
-    width: 400px;
-    height: 400px;
+    width: 22em;
+    height: 22em;
 }
 
 .man {

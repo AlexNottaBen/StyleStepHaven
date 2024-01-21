@@ -14,11 +14,11 @@ const Home: React.FC<HomeProps> = () => {
     };
 
     return (
-        <>
+        <div className={styles.home}>
             <ShoeCategories />
             <Filter onFilterChange={handleFilterChange} />
             <Product filter={filter} />
-        </>
+        </div>
     );
 };
 

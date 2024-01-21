@@ -28,7 +28,7 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="container">
+        <div className={styles.container}>
             <form className={styles.loginForm} onSubmit={handleSubmit}>
                 <div className={styles.email}>
                     <label htmlFor="email">Email:</label>

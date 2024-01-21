@@ -32,7 +32,7 @@ const Registration: React.FC = () => {
     };
 
     return (
-        <div className="container">
+        <div className={styles.container}>
             <form className={styles.regForm} onSubmit={handleSubmit}>
                 <div className={styles.name}>
                     <label htmlFor="firstName">Name:</label>
