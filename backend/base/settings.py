@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "restapi.apps.RestapiConfig",
     # REST & CORS
     "rest_framework",
+    'drf_spectacular',
     "corsheaders",
 ]
 
@@ -153,10 +154,23 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Set up pagination
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
     'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
     'PAGE_SIZE': 10,
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ]
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'StyleStepHaven',
+    'DESCRIPTION': '''
+    Peculiarities
+    Variety of styles: The store offers a wide selection of shoes that meet the latest fashion trends. Whether you're looking for casual sneakers, stylish heels or comfortable boots, we have something for everyone.
+    Filtering and search: Convenient filtering and search tools will help you quickly find exactly the models that interest you.
+    Detailed Product Descriptions: Each shoe comes with detailed descriptions, sizes, colors and photos so you can make an informed decision.
+    ''',
+    'VERSION': "1.0.0-alpha",
+    'SERVE_INCLUDE_SCHEME': False,
 }
