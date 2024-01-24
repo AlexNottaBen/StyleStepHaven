@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, ProductImage, ProductAttribute
+from .models import Product, ProductImage, ProductAttribute, ProductSize
 
 
 class ProductImageInline(admin.StackedInline):
@@ -11,6 +11,10 @@ class ProductAttributeInline(admin.StackedInline):
     model = ProductAttribute
 
 
+class ProductSizeInline(admin.StackedInline):
+    model = ProductSize
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    inlines = (ProductAttributeInline, ProductImageInline)
+    inlines = (ProductAttributeInline, ProductImageInline, ProductSizeInline)

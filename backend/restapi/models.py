@@ -5,13 +5,13 @@ from django.db import models
 
 
 def get_product_images_upload_location(instance: "Product", filename: str) -> str:
-    return f"products/product_{instance.pk}/images/{filename}"
+    return f"products/preview/images/{filename}"
 
 
 class Department(Enum):
-    MEN = 'Men\'s'
-    WOMEN = 'Women\'s'
-    KID = 'Kid\'s'
+    MEN = "Men's"
+    WOMEN = "Women's"
+    KID = "Kid's"
 
 
 # Create your models here.
@@ -76,3 +76,13 @@ class Order(models.Model):
     status = models.CharField(max_length=32, choices=[(tag.value, tag.name) for tag in Status])
     ordered_at = models.DateTimeField(auto_now_add=True)
 
+
+class ProductSize(models.Model):
+    product = models.ForeignKey(
+        to=Product,
+        on_delete=models.CASCADE,
+        related_name="sizes",
+        verbose_name="sizes",
+        null=True,
+    )
+    size = models.IntegerField()
