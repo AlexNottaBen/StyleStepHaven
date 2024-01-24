@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, ProductImage
+from .models import Product, ProductImage, ProductAttribute
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -8,8 +8,15 @@ class ProductImageSerializer(serializers.ModelSerializer):
         fields = ['image']
 
 
+class ProductAttributeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductAttribute
+        fields = ['name', 'value']
+
+
 class ProductSerializer(serializers.ModelSerializer):
-    gallery = ProductImageSerializer(many=True, read_only=True)
+    gallery = ProductImageSerializer(many=True, read_only=True, source="images")
+    attributes = ProductAttributeSerializer(many=True, read_only=True)  # source="attributes" is redundant!
 
     class Meta:
         model = Product
@@ -21,5 +28,6 @@ class ProductSerializer(serializers.ModelSerializer):
             "price",
             "image",
             "hovered_image",
+            "attributes",
             "gallery"
         )

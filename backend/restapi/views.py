@@ -1,4 +1,5 @@
 from typing import Any
+from collections import OrderedDict
 
 from rest_framework.filters import SearchFilter
 from rest_framework.views import APIView
@@ -7,8 +8,8 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
-from .models import Product
-from .serializer import ProductSerializer
+from .models import Product, ProductImage
+from .serializer import ProductSerializer, ProductImageSerializer
 from .purchase import Purchase
 
 

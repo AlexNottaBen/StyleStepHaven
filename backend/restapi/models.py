@@ -36,7 +36,7 @@ class ProductImage(models.Model):
     product = models.ForeignKey(
         to=Product,
         on_delete=models.CASCADE,
-        related_name="images",
+        related_name="images",  # source='images' in Serializer
         verbose_name="images",
         null=True,
     )
@@ -75,3 +75,4 @@ class Order(models.Model):
     products = models.ManyToManyField(Product, related_name='orders')
     status = models.CharField(max_length=32, choices=[(tag.value, tag.name) for tag in Status])
     ordered_at = models.DateTimeField(auto_now_add=True)
+
