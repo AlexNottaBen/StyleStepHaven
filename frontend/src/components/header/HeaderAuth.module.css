@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 85px;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navitem,
+.login {
+    font-family: Martian Mono, sans-serif;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.navitem:hover {
+    background-color: rgb(234, 222, 122);
+    color: #000000;
+}
+
+.login:hover {
+    background-color: #16ea1a;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navitem,
+    .login {
+        margin-top: 10px;
+    }
+}
+
+.active {
+    background-color: rgb(234, 222, 122);
+    color: #000000;
+}
+
+header .shop {
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    right: 500px;
+    width: 450px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: #222b31;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+header .shop::-webkit-scrollbar {
+    width: 10px;
+}
+
+header .shop::-webkit-scrollbar-thumb {
+    background-color: #16ea1a;
+    border-radius: 6px;
+}
+
+header .shop::-webkit-scrollbar-track {
+    background-color: #3a4750;
+}
+
+.img {
+    width: 100px;
+    height: 90px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #797979;
+    font-weight: 600;
+}
+
+.shopCart {
+    padding: 20px;
+    padding-bottom: 0;
+    border-bottom: 1px solid #3a4750; /* Add a border between items */
+}
+
+.deleteIcon {
+    color: #ca5252;
+    float: right;
+    position: relative;
+    top: -50px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+.deleteIcon:hover {
+    color: rgb(207, 7, 7);
+    transform: scale(1.5);
+}
+
+.cartCount {
+    position: absolute;
+    top: 15px;
+    right: 1;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 10px;
+}
+
+.quantity {
+    color: #16ea1a;
+    font-weight: bold;
+}
+
+.decrement,
+.increment {
+    padding: 2px 3px 3px 3px;
+    margin: 5px;
+    width: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #797979;
+}
+
+.decrement:hover,
+.increment:hover {
+    background-color: #c4c6c1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: 100ms;
+}
+
+.cartButton {
+    width: 120px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1e7332;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px; /* Adjust the margin as needed */
+    display: flex;
+    transition: background-color 0.3s ease;
+}
+
+.cartButton:hover {
+    background-color: #3ab85e;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+
+.cartIcon {
+    font-size: 20px;
+}

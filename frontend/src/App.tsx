@@ -4,6 +4,8 @@ import About from "./components/about/About";
 import Contacts from "./components/contacts/Contacts";
 import NotFound from "./components/NotFound";
 import Header from "./components/header/Header";
+import HeaderAuth from "./components/header/HeaderAuth";
+import Profile from "./components/profile/Profile";
 import Login from "./components/login/Login";
 import Basket from "./components/basket/Basket";
 import Footer from "./components/footer/Footer";
@@ -14,18 +16,21 @@ import Women from "./components/catalog/Women";
 import Kids from "./components/catalog/Kids";
 import SearchPage from "./components/searchPage/SearchPage";
 import styles from "./App.module.css";
+import Orders from "./components/profile/Orders";
 
 function App() {
     return (
         <div className={styles.App}>
             <BrowserRouter>
-                <Header />
+                <HeaderAuth />
                 <Routes>
                     <Route path="basket" element={<Basket />} />
                     <Route path="/" element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="contacts" element={<Contacts />} />
                     <Route path="login" element={<Login />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="orders" element={<Orders />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
                     <Route path="searchPage" element={<SearchPage />} />

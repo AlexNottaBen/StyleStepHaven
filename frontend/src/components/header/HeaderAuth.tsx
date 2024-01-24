@@ -9,7 +9,6 @@ import Search from "../search/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { cartActions } from "../../store/cart.slice";
-
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
@@ -68,8 +67,8 @@ const Header: React.FC<HeaderProps> = () => {
                 <NavLink className={styles.navitem} to="/contacts">
                     Contacts
                 </NavLink>
-                <NavLink className={styles.login} to="/login">
-                    Login
+                <NavLink className={styles.profile} to="/profile">
+                    Profile
                 </NavLink>
                 {isActive && (
                     <div>
