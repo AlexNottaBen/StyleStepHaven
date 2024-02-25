@@ -23,7 +23,7 @@ interface FormData {
     paymentMethod: string;
 }
 
-const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncrement, onDecrement, onRemove }) => {
+const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onIncrement, onDecrement, onRemove }) => {
     const [formData, setFormData] = useState<FormData>({
         order: cartItems || [],
         amount: "",
@@ -107,7 +107,7 @@ const DeliveryForm: React.FC<DeliveryFormProps> = ({ cartItems, onSubmit, onIncr
                     {cartItems && cartItems.length > 0 ? (
                         cartItems.map((item) => (
                             <li key={item.id}>
-                                {item.name} - Quantity: {item.count} Price - {item.price} ₴
+                                {item.name} - Quantity: {item.count}; Price - {item.price} ₴
                                 <button type="button" onClick={() => handleIncrement(item.id)}>
                                     ➕
                                 </button>

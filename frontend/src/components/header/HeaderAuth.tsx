@@ -11,7 +11,7 @@ import { RootState } from "../../store/store";
 import { cartActions } from "../../store/cart.slice";
 interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = () => {
+const HeaderAuth: React.FC<HeaderProps> = () => {
     const [isActive, setIsActive] = useState(false);
     const dispatch = useDispatch();
 
@@ -122,4 +122,4 @@ const Header: React.FC<HeaderProps> = () => {
     );
 };
 
-export default Header;
+export default HeaderAuth;

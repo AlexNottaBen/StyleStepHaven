@@ -5,17 +5,7 @@ import { cartActions } from "../../store/cart.slice";
 import { motion } from "framer-motion";
 
 interface BuyButtonProps {
-    product: {
-        // Замените типы данных на актуальные
-        // Пример: id: string, name: string, price: number, и так далее
-        id: number;
-        name: string;
-        price: number;
-        imageUrl: string;
-        count: number;
-
-        // Дополнительные свойства вашего продукта
-    };
+    product: ProductData;
 }
 
 const BuyButton: React.FC<BuyButtonProps> = ({ product }) => {
@@ -23,8 +13,6 @@ const BuyButton: React.FC<BuyButtonProps> = ({ product }) => {
 
     const handleBuyClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-
-        console.log("Click handled!");
         dispatch(cartActions.add(product));
     };
 

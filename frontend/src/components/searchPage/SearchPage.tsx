@@ -1,5 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
-import Button from "../buttons/Button";
+
 import BuyButton from "../buttons/BuyButton";
 import styles from "./Search.module.css";
 
@@ -20,7 +20,6 @@ const SearchPage = () => {
                             </Link>
                             <p>Price: {result.price}</p>
 
-                            <Button id={result.id.toString()} />
                             <br />
                             <BuyButton product={result} />
                         </form>

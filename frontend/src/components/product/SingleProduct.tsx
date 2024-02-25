@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BuyButton from "../buttons/BuyButton";
-import Button from "../buttons/Button";
 import axios from "axios";
 import styles from "./SingleProduct.module.css";
 
@@ -12,7 +11,7 @@ interface ProductData {
     description: string;
     image: string;
     count: number;
-    imageUrl: string;
+    attributes: { name: string; value: string }[];
 }
 
 const SingleProduct: React.FC = () => {
@@ -50,17 +49,24 @@ const SingleProduct: React.FC = () => {
             <div className="row">
                 <div className="col">
                     <img className={styles.img} src={product.image} alt={product.name} />
+                    <div className={styles.attributes}>
+                        <h2>Attributes:</h2>
+                        <ul>
+                            {product.attributes.map((attribute, index) => (
+                                <li key={index}>
+                                    <strong>{attribute.name}:</strong> {attribute.value}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="col">
-                    <h1 className={styles.price}>Price: {product.price} $ </h1>
+                    <h1 className={styles.price}>Price: {product.price} ₴</h1>
                     <p className={styles.description}>
                         <strong>Description:</strong> {product.description}
                     </p>
                     <div className="row">
-                        <div className="col">
-                            <Button id={id} />
-                        </div>
                         <div className="col">
                             <br />
                             <BuyButton product={product} />

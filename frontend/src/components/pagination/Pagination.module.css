@@ -1,0 +1,43 @@
+/* Pagination.module.css */
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginationButtons {
+    display: flex;
+    align-items: center;
+}
+
+.paginationButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.paginationButton:hover {
+    background-color: #0056b3;
+}
+
+.pageNumbers {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 10px;
+}
+
+.pageNumber {
+    margin: 0 3px;
+}
+
+.currentPage {
+    font-weight: bold;
+    background-color: #0056b3; /* Цвет активной кнопки */
+}

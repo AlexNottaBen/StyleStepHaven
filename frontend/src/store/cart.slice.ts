@@ -1,10 +1,10 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface CartItem {
     id: number;
-    name: string; // Добавляем поле с названием продукта
-    price: number; // Добавляем поле с ценой продукта
-    image_url: string; // Добавляем поле с URL изображения продукта
+    name: string;
+    price: number;
+    image_url: string;
     count: number;
     image: string;
 }
@@ -23,17 +23,12 @@ export const cartSlice = createSlice({
     reducers: {
         add: (state, action: PayloadAction<CartItem>) => {
             const { id } = action.payload;
-            const existed = state.items.find((i) => i.id === id);
-            if (!existed) {
+            const existingItemIndex = state.items.findIndex((item) => item.id === id);
+            if (existingItemIndex !== -1) {
+                state.items[existingItemIndex].count += 1;
+            } else {
                 state.items.push({ ...action.payload, count: 1 });
-                return;
             }
-            state.items.map((i) => {
-                if (i.id === id) {
-                    i.count += 1;
-                }
-                return i;
-            });
         },
         remove: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter((item) => item.id !== action.payload);
@@ -42,6 +37,12 @@ export const cartSlice = createSlice({
             const itemToDecrease = state.items.find((item) => item.id === action.payload);
             if (itemToDecrease && itemToDecrease.count > 1) {
                 itemToDecrease.count -= 1;
+            }
+        },
+        incrementQuantity: (state, action: PayloadAction<number>) => {
+            const itemToIncrement = state.items.find((item) => item.id === action.payload);
+            if (itemToIncrement) {
+                itemToIncrement.count += 1;
             }
         },
     },
