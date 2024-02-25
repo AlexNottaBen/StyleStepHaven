@@ -1,3 +1,4 @@
+/* SingleProduct.module.css */
 .img {
     width: 750px;
     height: 500px;
@@ -13,4 +14,10 @@
 
 .description {
     font-size: 18px;
+}
+
+/* Стили для слайдера */
+.slider {
+    max-width: 750px; /* Максимальная ширина слайдера */
+    max-height: 500px; /* Максимальная высота слайдера */
 }
