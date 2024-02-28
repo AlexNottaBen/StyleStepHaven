@@ -1,15 +1,19 @@
-from typing import Any
+from typing import Any, Optional
 from collections import OrderedDict
 
+from django.contrib.auth.models import User
+from rest_framework import status
 from rest_framework.filters import SearchFilter
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.mixins import RetrieveModelMixin
 from rest_framework.request import Request
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
 from .models import Product, ProductImage
-from .serializer import ProductSerializer, ProductImageSerializer
+from .serializer import ProductSerializer, ProductImageSerializer, UserSerializer
 from .purchase import Purchase
 
 
@@ -90,3 +94,23 @@ class PurchaseView(APIView):
         url = purchase.get_url()
 
         return Response({"url": url})
+
+
+class UserRetrieveView(GenericViewSet, RetrieveModelMixin):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (
+        IsAuthenticated,
+    )
+
+    def get_object(self) -> Optional[User]:
+        # Get object from URL
+        user = super().get_object()
+
+        # Get authenticated user
+        authenticated_user = self.request.user
+
+        if user.id != authenticated_user.id:
+            return None
+
+        return user
