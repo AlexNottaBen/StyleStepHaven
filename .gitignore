@@ -7,10 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Nodejs
 dist
 dist-ssr
 *.local
+node_modules
+package-lock.json
+
+# Python
+__pycache__
+database.config.yaml
+backend/database.config.yaml
 
 # Editor directories and files
 .vscode/*
@@ -22,8 +29,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-node_modules
-__pycache__
-database.config.yaml
-backend/database.config.yaml
