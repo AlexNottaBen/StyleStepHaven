@@ -7,13 +7,18 @@ from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework.mixins import RetrieveModelMixin
+from rest_framework.mixins import RetrieveModelMixin, CreateModelMixin
 from rest_framework.request import Request
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
 from .models import Product, ProductImage
-from .serializer import ProductSerializer, ProductImageSerializer, UserSerializer
+from .serializer import (
+    ProductSerializer,
+    ProductImageSerializer,
+    UserSerializer,
+    UserRegisterSerializer
+)
 from .purchase import Purchase
 
 
@@ -94,6 +99,10 @@ class PurchaseView(APIView):
         url = purchase.get_url()
 
         return Response({"url": url})
+
+
+class UserCreateView(GenericViewSet, CreateModelMixin):
+    serializer_class = UserRegisterSerializer
 
 
 class UserRetrieveView(GenericViewSet, RetrieveModelMixin):
