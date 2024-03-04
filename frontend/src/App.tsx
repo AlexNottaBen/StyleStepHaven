@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -19,26 +20,26 @@ import styles from "./App.module.css";
 import Orders from "./components/profile/Orders";
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     return (
         <div className={styles.App}>
             <BrowserRouter>
-                <HeaderAuth />
+                {isLoggedIn ? <HeaderAuth /> : <Header />}
                 <Routes>
                     <Route path="basket" element={<Basket />} />
                     <Route path="/" element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="contacts" element={<Contacts />} />
-                    <Route path="login" element={<Login />} />
+                    <Route path="login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="profile" element={<Profile />} />
                     <Route path="orders" element={<Orders />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
                     <Route path="searchPage" element={<SearchPage />} />
-
                     <Route path="men" element={<Men />} />
                     <Route path="women" element={<Women />} />
                     <Route path="kids" element={<Kids />} />
-
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />

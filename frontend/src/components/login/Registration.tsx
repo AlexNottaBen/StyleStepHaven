@@ -1,11 +1,12 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import styles from "./Registration.module.css";
 
 interface FormData {
     firstName: string;
     lastName: string;
-    email: string;
+    username: string;
     password: string;
 }
 
@@ -13,7 +14,7 @@ const Registration: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
         firstName: "",
         lastName: "",
-        email: "",
+        username: "",
         password: "",
     });
 
@@ -25,10 +26,15 @@ const Registration: React.FC = () => {
         });
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Здесь можно добавить логику для отправки данных на сервер
-        console.log("Отправка данных:", formData);
+        try {
+            const response = await axios.post("http://localhost:8000/api/user/create/", formData);
+            const token = response.data.token; // Предполагается, что сервер возвращает токен в формате JSON
+            localStorage.setItem("access_token", token); // Сохранение токена в localStorage
+        } catch (error) {
+            console.error("Ошибка при регистрации:", error);
+        }
     };
 
     return (
@@ -42,9 +48,9 @@ const Registration: React.FC = () => {
                     <label htmlFor="lastName">Surname:</label>
                     <input className={styles.surnameInput} type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} required />
                 </div>
-                <div className={styles.email}>
-                    <label htmlFor="email">Email:</label>
-                    <input className={styles.emailInput} type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                <div className={styles.username}>
+                    <label htmlFor="username">Username:</label>
+                    <input className={styles.usernameInput} type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
                 </div>
                 <div className={styles.password}>
                     <label htmlFor="password">Password:</label>
@@ -53,7 +59,6 @@ const Registration: React.FC = () => {
                 <button className={styles.buttonRegistration} type="submit">
                     Registration
                 </button>
-
                 <Link to="/login" className={styles.buttonLogin}>
                     Login
                 </Link>

@@ -1,7 +1,7 @@
 /* SingleProduct.module.css */
 .img {
-    width: 750px;
-    height: 500px;
+    width: 550px;
+    height: 300px;
     justify-content: center;
     padding: 15px;
     border-radius: 25px;
@@ -14,10 +14,11 @@
 
 .description {
     font-size: 18px;
+    margin: 10px;
 }
 
 /* Стили для слайдера */
 .slider {
-    max-width: 750px; /* Максимальная ширина слайдера */
-    max-height: 500px; /* Максимальная высота слайдера */
+    max-width: 550px; /* Максимальная ширина слайдера */
+    max-height: 300px; /* Максимальная высота слайдера */
 }

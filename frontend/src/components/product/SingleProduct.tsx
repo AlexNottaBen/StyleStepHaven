@@ -15,7 +15,7 @@ interface ProductData {
     image: string;
     count: number;
     attributes: { name: string; value: string }[];
-    gallery: { image: string }[]; // Добавляем тип для галереи изображений
+    gallery: { image: string }[];
 }
 
 const SingleProduct: React.FC = () => {

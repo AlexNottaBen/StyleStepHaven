@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 import styles from "../profile/Profile.module.css";
 
 const Profile: React.FC = () => {
+    const [userData, setUserData] = useState<any>(null); // Состояние для данных пользователя
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const base64Token = localStorage.getItem("access_token");
+
+                if (base64Token) {
+                    // Декодируем токен из формата base64
+                    const tokenParts = base64Token.split(".");
+                    const payload = tokenParts[1];
+                    const decodedPayload = atob(payload);
+                    const parsedPayload = JSON.parse(decodedPayload);
+
+                    // Получаем ID пользователя из декодированного токена
+                    const userId = parsedPayload.user_id;
+
+                    // Отправляем запрос на сервер по ID пользователя
+                    const response = await axios.get(`http://localhost:8000/api/user/${userId}`, {
+                        headers: {
+                            Authorization: `JWT ${base64Token}`,
+                        },
+                    });
+
+                    // Обновляем состояние с данными пользователя
+                    setUserData(response.data);
+                }
+            } catch (error) {
+                console.error("Ошибка при получении данных пользователя:", error);
+            }
+        };
+
+        fetchUserData(); // Вызываем функцию получения данных пользователя при монтировании компонента
+    }, []);
+
     return (
         <div>
             <div className={styles.navigate}>
@@ -18,34 +54,36 @@ const Profile: React.FC = () => {
 
             <h1>Profile</h1>
 
-            <Box
-                component="form"
-                sx={{
-                    m: 1,
-                    width: "25ch",
-                    "& > :not(style)": {
-                        margin: "7px 0",
-                        "& .MuiInputBase-input": { color: "white" },
-                        "& .MuiInputLabel-root": { color: "white !important" },
-                        "& .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "white !important",
+            {userData && (
+                <Box
+                    component="form"
+                    sx={{
+                        m: 1,
+                        width: "25ch",
+                        "& > :not(style)": {
+                            margin: "7px 0",
+                            "& .MuiInputBase-input": { color: "white" },
+                            "& .MuiInputLabel-root": { color: "white !important" },
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "white !important",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "green !important",
+                            },
+                            "&:focus .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "green !important",
+                            },
+                            "& fieldset": { borderColor: "white !important" },
                         },
-                        "&:hover .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "green !important",
-                        },
-                        "&:focus .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "green !important",
-                        },
-                        "& fieldset": { borderColor: "white !important" },
-                    },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <TextField id="name" label="Name" variant="outlined" />
-                <TextField id="email" label="Email" variant="outlined" />
-                <TextField id="password" label="Password" variant="outlined" />
-            </Box>
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField id="name" label="Name" variant="outlined" defaultValue={userData.username} />
+                    <TextField id="email" label="Email" variant="outlined" defaultValue={userData.email} />
+                </Box>
+            )}
+
             <button className={styles.customButton}>
                 <div className="svg-wrapper-1">
                     <div className="svg-wrapper">

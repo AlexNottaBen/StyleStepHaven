@@ -12,14 +12,14 @@
     font-family: Kanit, sans-serif;
 }
 
-.email,
+.username,
 .password,
 .name,
 .surname {
     padding: 10px 10px;
 }
 
-.emailInput,
+.usernameInput,
 .passwordInput,
 .nameInput,
 .surnameInput {
@@ -29,6 +29,9 @@
     border: 1px solid #ccc;
     color: #ffffff;
     font-size: 20px;
+}
+.usernameInput {
+    margin: 10px 20px 0px 10px;
 }
 
 .surnameInput {
