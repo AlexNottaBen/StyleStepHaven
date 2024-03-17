@@ -2,7 +2,13 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Product, ProductImage, ProductAttribute, ProductSize
+from .models import (
+    Product,
+    ProductImage,
+    ProductAttribute,
+    ProductSize,
+    Profile
+)
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -44,7 +50,20 @@ class ProductSerializer(serializers.ModelSerializer):
         )
 
 
+class UserProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Profile
+        fields = (
+            "city",
+            "phone_number",
+        )
+
+
 class UserSerializer(serializers.ModelSerializer):
+
+    profile = UserProfileSerializer(many=False, read_only=True)
+
     class Meta:
         model = User
         fields = (
@@ -54,6 +73,7 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "date_joined",
             "last_login",
+            "profile",
         )
 
 
@@ -61,14 +81,18 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
+            "id",
             "username",
             "first_name",
             "last_name",
             "password",
         )
+        read_only_fields = ("id",)  # Mark 'id' as read-only to prevent modification
 
     def create(self, validated_data):
         # Hash password before save.
         validated_data['password'] = make_password(validated_data['password'])
         user = super(UserRegisterSerializer, self).create(validated_data)
         return user
+
+

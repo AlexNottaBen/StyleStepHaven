@@ -68,15 +68,6 @@ class Status(Enum):
     CANCELLED = 'CANCELLED'
     RETURN = 'RETURN'
 
-
-class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    delivery_address = models.TextField(null=True, blank=True)
-    products = models.ManyToManyField(Product, related_name='orders')
-    status = models.CharField(max_length=32, choices=[(tag.value, tag.name) for tag in Status])
-    ordered_at = models.DateTimeField(auto_now_add=True)
-
-
 class ProductSize(models.Model):
     product = models.ForeignKey(
         to=Product,
@@ -86,3 +77,10 @@ class ProductSize(models.Model):
         null=True,
     )
     size = models.IntegerField()
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
+    city = models.CharField(max_length=128, null=True, blank=True)
+    phone_number = models.CharField(max_length=12, null=True, blank=True)
+

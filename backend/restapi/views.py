@@ -7,17 +7,18 @@ from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework.mixins import RetrieveModelMixin, CreateModelMixin
+from rest_framework.mixins import RetrieveModelMixin, CreateModelMixin, UpdateModelMixin
 from rest_framework.request import Request
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
-from .models import Product, ProductImage
+from .models import Product, ProductImage, Profile
 from .serializer import (
     ProductSerializer,
     ProductImageSerializer,
     UserSerializer,
-    UserRegisterSerializer
+    UserRegisterSerializer,
+    UserProfileSerializer,
 )
 from .purchase import Purchase
 
@@ -104,8 +105,30 @@ class PurchaseView(APIView):
 class UserCreateView(GenericViewSet, CreateModelMixin):
     serializer_class = UserRegisterSerializer
 
+    def create(self, request, *args, **kwargs):
+        # Create user
+        response = super().create(request, *args, **kwargs)
 
-class UserRetrieveView(GenericViewSet, RetrieveModelMixin):
+        # If user created successfully
+        if response.status_code == status.HTTP_201_CREATED:
+            user_data = response.data
+
+            # Get or create the user
+            user, created = User.objects.get_or_create(
+                id=user_data['id'],
+                username=user_data['username'],
+                first_name=user_data['first_name'],
+                last_name=user_data['last_name'],
+                password=user_data['password']
+            )
+
+            # Create profile for the user
+            Profile.objects.create(user=user)
+
+        return response
+
+
+class UserView(GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (
@@ -123,3 +146,24 @@ class UserRetrieveView(GenericViewSet, RetrieveModelMixin):
             return None
 
         return user
+
+    def update(self, request, *args, **kwargs):
+        response = super().update(request, *args, **kwargs)
+
+        # If user updated successfully
+        if response.status_code == status.HTTP_200_OK:
+            user_data = response.data
+
+            # Get profile data from request
+            profile_data = request.data.get('profile', {})
+            user_profile = self.get_object().profile
+
+            # Update profile if profile data is provided
+            if profile_data:
+                profile_serializer = UserProfileSerializer(instance=user_profile, data=profile_data, partial=True)
+                if profile_serializer.is_valid():
+                    profile_serializer.save()
+                else:
+                    return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return response
