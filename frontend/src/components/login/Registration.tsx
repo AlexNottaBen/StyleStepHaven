@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Modal, Button } from "@mui/material";
 import styles from "./Registration.module.css";
 
 interface FormData {
@@ -17,6 +18,7 @@ const Registration: React.FC = () => {
         username: "",
         password: "",
     });
+    const [showModal, setShowModal] = useState(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -32,9 +34,14 @@ const Registration: React.FC = () => {
             const response = await axios.post("http://localhost:8000/api/user/create/", formData);
             const token = response.data.token; // Предполагается, что сервер возвращает токен в формате JSON
             localStorage.setItem("access_token", token); // Сохранение токена в localStorage
+            setShowModal(true); // Показать модальное окно при успешной регистрации
         } catch (error) {
             console.error("Ошибка при регистрации:", error);
         }
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     return (
@@ -63,6 +70,16 @@ const Registration: React.FC = () => {
                     Login
                 </Link>
             </form>
+            <Modal open={showModal} onClose={closeModal}>
+                <div className={styles.modal}>
+                    <div className={styles.modalContent}>
+                        <h2>Registration successful!</h2>
+                        <Button onClick={closeModal} variant="contained">
+                            Close
+                        </Button>
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };

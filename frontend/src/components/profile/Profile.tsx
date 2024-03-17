@@ -47,13 +47,8 @@ const Profile: React.FC = () => {
                 <NavLink className={styles.navitem} to="/profile">
                     <h2>Profile</h2>
                 </NavLink>
-                <NavLink className={styles.navitem} to="/orders">
-                    <h2>Orders</h2>
-                </NavLink>
             </div>
-
             <h1>Profile</h1>
-
             {userData && (
                 <Box
                     component="form"
@@ -80,7 +75,8 @@ const Profile: React.FC = () => {
                     autoComplete="off"
                 >
                     <TextField id="name" label="Name" variant="outlined" defaultValue={userData.username} />
-                    <TextField id="email" label="Email" variant="outlined" defaultValue={userData.email} />
+                    <TextField id="firstname" label="First Name" variant="outlined" defaultValue={userData.first_name} />
+                    <TextField id="lastname" label="Surname" variant="outlined" defaultValue={userData.last_name} />
                 </Box>
             )}
 

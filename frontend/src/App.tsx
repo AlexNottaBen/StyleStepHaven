@@ -17,7 +17,6 @@ import Women from "./components/catalog/Women";
 import Kids from "./components/catalog/Kids";
 import SearchPage from "./components/searchPage/SearchPage";
 import styles from "./App.module.css";
-import Orders from "./components/profile/Orders";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +32,6 @@ function App() {
                     <Route path="contacts" element={<Contacts />} />
                     <Route path="login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="profile" element={<Profile />} />
-                    <Route path="orders" element={<Orders />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
                     <Route path="searchPage" element={<SearchPage />} />
