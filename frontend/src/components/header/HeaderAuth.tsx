@@ -1,3 +1,4 @@
+// HeaderAuth.tsx
 import React, { useState, useCallback, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { cartActions } from "../../store/cart.slice";
 
-const HeaderAuth: React.FC = () => {
+interface HeaderAuthProps {
+    isLoggedIn: boolean;
+}
+
+const HeaderAuth: React.FC<HeaderAuthProps> = ({ isLoggedIn }) => {
     const [isActive, setIsActive] = useState(false);
     const dispatch = useDispatch();
 
@@ -66,9 +71,11 @@ const HeaderAuth: React.FC = () => {
                 <NavLink className={styles.navitem} to="/contacts">
                     Contacts
                 </NavLink>
-                <NavLink className={styles.profile} to="/profile">
-                    Profile
-                </NavLink>
+                {isLoggedIn && (
+                    <NavLink className={styles.navitem} to="/profile">
+                        Profile
+                    </NavLink>
+                )}
                 {isActive && (
                     <div>
                         <div>

@@ -1,3 +1,4 @@
+// Header.tsx
 import React, { useState, useCallback, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,9 +11,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { cartActions } from "../../store/cart.slice";
 
-interface HeaderProps {}
+// Обновляем интерфейс HeaderProps
+interface HeaderProps {
+    isLoggedIn: boolean; // Добавляем проп isLoggedIn
+}
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
+    // Передаем проп isLoggedIn
     const [isActive, setIsActive] = useState(false);
     const dispatch = useDispatch();
 
@@ -68,9 +73,16 @@ const Header: React.FC<HeaderProps> = () => {
                 <NavLink className={styles.navitem} to="/contacts">
                     Contacts
                 </NavLink>
-                <NavLink className={styles.login} to="/login">
-                    Login
-                </NavLink>
+                {/* В зависимости от isLoggedIn показываем различные ссылки */}
+                {isLoggedIn ? (
+                    <NavLink className={styles.navitem} to="/profile">
+                        Profile
+                    </NavLink>
+                ) : (
+                    <NavLink className={styles.login} to="/login">
+                        Login
+                    </NavLink>
+                )}
                 {isActive && (
                     <div>
                         <div>

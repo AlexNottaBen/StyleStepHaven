@@ -5,16 +5,16 @@ import { Modal, Button } from "@mui/material";
 import styles from "./Registration.module.css";
 
 interface FormData {
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     username: string;
     password: string;
 }
 
 const Registration: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         username: "",
         password: "",
     });
@@ -49,11 +49,11 @@ const Registration: React.FC = () => {
             <form className={styles.regForm} onSubmit={handleSubmit}>
                 <div className={styles.name}>
                     <label htmlFor="firstName">Name:</label>
-                    <input className={styles.nameInput} type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} required />
+                    <input className={styles.nameInput} type="text" id="firstName" name="first_name" value={formData.first_name} onChange={handleChange} required />
                 </div>
                 <div className={styles.surname}>
                     <label htmlFor="lastName">Surname:</label>
-                    <input className={styles.surnameInput} type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} required />
+                    <input className={styles.surnameInput} type="text" id="lastName" name="last_name" value={formData.last_name} onChange={handleChange} required />
                 </div>
                 <div className={styles.username}>
                     <label htmlFor="username">Username:</label>

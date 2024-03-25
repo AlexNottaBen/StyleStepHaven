@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Используем useNavigate для перехода
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 interface FormData {
@@ -10,6 +10,7 @@ interface FormData {
 
 interface LoginProps {
     onLogin: () => void;
+    isLoggedIn: boolean;
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
@@ -17,8 +18,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         username: "",
         password: "",
     });
-    const [error, setError] = useState<string>(""); // Состояние для отслеживания ошибки
-    const navigate = useNavigate(); // Инициализируем navigate для перехода
+    const [error, setError] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -39,9 +41,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             const accessToken = response.data.access;
             localStorage.setItem("access_token", accessToken);
             onLogin();
-            navigate("/profile"); // Переходим на страницу профиля
+            navigate("/profile");
         } catch (error) {
-            setError("Неправильный логин или пароль"); // Устанавливаем ошибку в состояние
+            setError("Incorrect username or password");
         }
     };
 
@@ -49,8 +51,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className={styles.container}>
             <form className={styles.loginForm} onSubmit={handleSubmit}>
                 <div className={styles.username}>
-                    {" "}
-                    {/* Изменим класс на username */}
                     <label htmlFor="username">Username:</label>
                     <input className={styles.usernameInput} type="text" id="username" placeholder="Username" name="username" value={formData.username} onChange={handleChange} required />
                 </div>
@@ -64,7 +64,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 <Link to="/registration" className={styles.buttonRegistration}>
                     Registration
                 </Link>
-                {error && <p className={styles.error}>{error}</p>} {/* Выводим сообщение об ошибке */}
+                {error && <p className={styles.error}>{error}</p>}
             </form>
         </div>
     );

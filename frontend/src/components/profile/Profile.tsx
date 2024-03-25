@@ -1,12 +1,16 @@
+// Profile.tsx
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import styles from "../profile/Profile.module.css";
+import HeaderAuth from "../header/HeaderAuth"; // Используем HeaderAuth
+import Header from "../header/Header";
 
-const Profile: React.FC = () => {
-    const [userData, setUserData] = useState<any>(null); // Состояние для данных пользователя
+const Profile: React.FC<{ isLoggedIn: boolean }> = ({ isLoggedIn }) => {
+    const [userData, setUserData] = useState<any>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -14,23 +18,19 @@ const Profile: React.FC = () => {
                 const base64Token = localStorage.getItem("access_token");
 
                 if (base64Token) {
-                    // Декодируем токен из формата base64
                     const tokenParts = base64Token.split(".");
                     const payload = tokenParts[1];
                     const decodedPayload = atob(payload);
                     const parsedPayload = JSON.parse(decodedPayload);
 
-                    // Получаем ID пользователя из декодированного токена
                     const userId = parsedPayload.user_id;
 
-                    // Отправляем запрос на сервер по ID пользователя
                     const response = await axios.get(`http://localhost:8000/api/user/${userId}`, {
                         headers: {
                             Authorization: `JWT ${base64Token}`,
                         },
                     });
 
-                    // Обновляем состояние с данными пользователя
                     setUserData(response.data);
                 }
             } catch (error) {
@@ -38,11 +38,41 @@ const Profile: React.FC = () => {
             }
         };
 
-        fetchUserData(); // Вызываем функцию получения данных пользователя при монтировании компонента
+        fetchUserData();
     }, []);
+
+    const handleSaveChanges = async () => {
+        try {
+            const base64Token = localStorage.getItem("access_token");
+            if (base64Token) {
+                await axios.put(`http://localhost:8000/api/user/${userData.id}/`, userData, {
+                    headers: {
+                        Authorization: `JWT ${base64Token}`,
+                    },
+                });
+                alert("Changes saved successfully!");
+            }
+        } catch (error) {
+            console.error("Ошибка при сохранении изменений:", error);
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUserData((prevUserData: any) => ({
+            ...prevUserData,
+            [name]: value,
+        }));
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("access_token");
+        navigate("/login");
+    };
 
     return (
         <div>
+            {isLoggedIn ? <HeaderAuth isLoggedIn={isLoggedIn} /> : <Header isLoggedIn={isLoggedIn} />}
             <div className={styles.navigate}>
                 <NavLink className={styles.navitem} to="/profile">
                     <h2>Profile</h2>
@@ -74,13 +104,12 @@ const Profile: React.FC = () => {
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField id="name" label="Name" variant="outlined" defaultValue={userData.username} />
-                    <TextField id="firstname" label="First Name" variant="outlined" defaultValue={userData.first_name} />
-                    <TextField id="lastname" label="Surname" variant="outlined" defaultValue={userData.last_name} />
+                    <TextField id="username" name="username" label="Username" variant="outlined" defaultValue={userData.username} onChange={handleChange} />
+                    <TextField id="first_name" name="first_name" label="First Name" variant="outlined" defaultValue={userData.first_name} onChange={handleChange} />
+                    <TextField id="last_name" name="last_name" label="Last Name" variant="outlined" defaultValue={userData.last_name} onChange={handleChange} />
                 </Box>
             )}
-
-            <button className={styles.customButton}>
+            <button className={styles.customButton} onClick={handleSaveChanges}>
                 <div className="svg-wrapper-1">
                     <div className="svg-wrapper">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" className="icon">
@@ -89,6 +118,9 @@ const Profile: React.FC = () => {
                     </div>
                 </div>
                 <span>Save</span>
+            </button>
+            <button className={styles.logoutButton} onClick={handleLogout}>
+                Logout
             </button>
         </div>
     );
