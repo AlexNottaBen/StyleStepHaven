@@ -1,11 +1,12 @@
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 import BuyButton from "../buttons/BuyButton";
 import styles from "./Search.module.css";
 
 const SearchPage = () => {
-    const location = useLocation();
-    const searchResults = location.state && location.state.searchResults;
+    const searchResults = useSelector((state: RootState) => state.search.searchResults);
 
     return (
         <div className={styles.search}>

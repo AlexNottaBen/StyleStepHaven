@@ -71,3 +71,53 @@
 .customButton:active {
     transform: scale(0.95);
 }
+
+.logoutButton {
+    margin: 10px;
+    margin-left: 2.5em;
+    font-family: inherit;
+    font-size: 20px;
+    background: #212121;
+    color: white;
+    fill: rgb(155, 153, 153);
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    font-weight: 1000;
+}
+
+.logoutButton:hover {
+    background: #000;
+}
+
+.logoutButton:active {
+    transform: scale(0.95); /* Эффект нажатия */
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal {
+    color: #fff;
+    text-align: center;
+    background-color: #292626;
+}
+
+.modalButton {
+    background-color: rgb(106, 202, 82);
+    margin: auto; /* Центрирование кнопки */
+    display: block; /* Установка блочного элемента для центрирования */
+    border: 1px solid rgb(106, 202, 82); /* Установка цвета обводки */
+}
+
+.modalButton:hover {
+    background-color: rgb(50, 125, 32);
+    border: 1px solid rgb(50, 125, 32); /* Установка цвета обводки */
+}

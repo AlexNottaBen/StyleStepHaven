@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import styles from "./About.module.css";
+import { useEffect } from "react";
 
 // Определение типа для пропсов компонента
 type AboutProps = {};
 
 const About: React.FC<AboutProps> = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0); // Прокрутка страницы вверх при монтировании компонента
+    }, []); // Пустой массив зависимостей, чтобы код вызывался только один раз
     return (
         <div className={styles.about}>
             <motion.h1

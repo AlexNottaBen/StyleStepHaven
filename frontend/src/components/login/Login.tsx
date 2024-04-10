@@ -1,6 +1,9 @@
-import axios from "axios";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+// Login.tsx
+import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { login } from "../../store/auth.slice";
 import styles from "./Login.module.css";
 
 interface FormData {
@@ -9,17 +12,20 @@ interface FormData {
 }
 
 interface LoginProps {
-    onLogin: () => void;
-    isLoggedIn: boolean;
+    setIsLoggedIn: (value: boolean) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC<LoginProps> = ({ setIsLoggedIn }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0); // Прокрутка страницы вверх при монтировании компонента
+    }, []); // Пустой массив зависимостей, чтобы код вызывался только один раз
+
     const [formData, setFormData] = useState<FormData>({
         username: "",
         password: "",
     });
     const [error, setError] = useState<string>("");
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +46,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             });
             const accessToken = response.data.access;
             localStorage.setItem("access_token", accessToken);
-            onLogin();
+            dispatch(login());
+            setIsLoggedIn(true);
             navigate("/profile");
         } catch (error) {
             setError("Incorrect username or password");

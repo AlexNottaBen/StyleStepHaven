@@ -6,24 +6,19 @@
     margin-top: 20px;
 }
 
-.paginationButtons {
-    display: flex;
-    align-items: center;
-}
-
 .paginationButton {
-    background-color: #007bff;
+    background-color: #242424;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 8px 16px;
-    margin: 0 5px;
+    margin: 0 5px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .paginationButton:hover {
-    background-color: #0056b3;
+    background-color: #18b01a;
 }
 
 .pageNumbers {
@@ -34,10 +29,20 @@
 }
 
 .pageNumber {
-    margin: 0 3px;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 10px;
+    background-color: #2b2929;
+    color: #fff;
+    border-style: solid;
 }
 
 .currentPage {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 10px;
     font-weight: bold;
-    background-color: #0056b3; /* Цвет активной кнопки */
+    color: #fff;
+    background-color: #00b354; /* Цвет активной кнопки */
+    border-style: solid;
 }

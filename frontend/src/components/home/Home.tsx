@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Product from "../product/Product";
 import ShoeCategories from "../shoeCategories/ShoeCategories";
 import styles from "./Home.module.css";
@@ -12,6 +12,9 @@ const Home: React.FC<HomeProps> = () => {
     const handleFilterChange = (category: string) => {
         setFilter(category);
     };
+    useEffect(() => {
+        window.scrollTo(0, 0); // Прокрутка страницы вверх при монтировании компонента
+    }, []); // Пустой массив зависимостей, чтобы код вызывался только один раз
 
     return (
         <div className={styles.home}>

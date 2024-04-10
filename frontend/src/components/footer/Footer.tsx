@@ -37,7 +37,7 @@ const Footer: FC = () => {
                         </div>
                     </div>
                     <div className="col">
-                        <span className={styles.footerName}>CONTACT</span>
+                        <span className={styles.footerName}>CONTACTS</span>
                         <div className={styles.footerItem}>
                             <div className="contact">
                                 <span>

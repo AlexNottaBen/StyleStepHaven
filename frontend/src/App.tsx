@@ -24,10 +24,13 @@ function App() {
     const [hasAccessToken, setHasAccessToken] = useState(false);
 
     useEffect(() => {
-        // Проверяем наличие access token в localStorage
+        // Проверяем наличие access token в localStorage при загрузке приложения
         const accessToken = localStorage.getItem("access_token");
-        setHasAccessToken(accessToken !== null);
-    }, [isLoggedIn]); // Обновляем состояние hasAccessToken при изменении isLoggedIn
+        if (accessToken) {
+            setIsLoggedIn(true);
+            setHasAccessToken(true);
+        }
+    }, []);
 
     return (
         <div className={styles.App}>
@@ -40,7 +43,7 @@ function App() {
                     <Route path="about" element={<About />} />
                     <Route path="contacts" element={<Contacts />} />
                     {/* Передаем isLoggedIn в компонент Login */}
-                    <Route path="login" element={<Login onLogin={() => setIsLoggedIn(true)} isLoggedIn={isLoggedIn} />} />
+                    <Route path="login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="profile" element={<Profile isLoggedIn={isLoggedIn} />} />
                     <Route path="registration" element={<Registration />} />
                     <Route path="singleProduct/:id" element={<SingleProduct />} />
